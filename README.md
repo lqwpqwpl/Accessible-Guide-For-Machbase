@@ -1,5 +1,6 @@
 # 설치
 Machbase가 설치되지 않았다면 다음 링크를 참고해 설치해 주시기 바랍니다.
+
 윈도우즈 설치 가이드: https://machbase.atlassian.net/wiki/spaces/M7M/pages/417759611/Windows
 
 물론, 다른 OS에 대한 설치 가이드 또한 위 문서의 좌측에 위치한 목차에 존재합니다.
