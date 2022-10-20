@@ -1,63 +1,36 @@
-# Accessible-Guide-For-Machbase
+# Accessible Guide For Machbase
 
-## 목차
+## 머리말
 
-- [Accessible-Guide-For-Machbase](#accessible-guide-for-machbase)
-  - [목차](#목차)
-  - [설치](#설치)
-  - [machsql 접근 방법](#machsql-접근-방법)
-  - [윈도우즈에서 UI를 통해 접근하기](#윈도우즈에서-ui를-통해-접근하기)
-  - [명령어 실행을 통해 접근하기](#명령어-실행을-통해-접근하기)
-  - [설치 후 기본값 계정](#설치-후-기본값-계정)
-  - [테스트 코드](#테스트-코드)
+이 가이드는 기존 데이터베이스에 대한 지식이 있는 개발자가 Machbase를 입문하는데에 있어서 번거로움이 없게끔 하기 위해 [기존 Machbase 가이드](https://machbase.atlassian.net/wiki/spaces/M7M/pages/417759233/Machbase+7+Manual)를 읽어야 할 방향을 안내하는 가이드입니다.
+
+**이 가이드는 Machbase사와 아무런 연관이 없는 개인이 작성한 가이드입니다.** 학습 목적으로 작성된 가이드이기에 지속적인 유지·보수를 약속할 수 없다는 점, 사실과 다른 부분이 있을 수도 있다는 점 양해 바랍니다.
 
 ## 설치
 
-Machbase가 설치되지 않았다면 다음 링크를 참고해 설치해 주시기 바랍니다.
+1. [Machbase 설치하기](/installation/install.md)
+2. [방화벽 설정하기](/installation/configure_firewall.md)
 
-윈도우즈 설치 가이드: <https://machbase.atlassian.net/wiki/spaces/M7M/pages/417759611/Windows>
+## UI 안내 (Windows 한정)
 
-물론, 다른 OS에 대한 설치 가이드 또한 위 문서의 좌측에 위치한 목차에 존재합니다.
+1. [🚧 이름 없는 문서](/ui/server_manager.md)
 
-## machsql 접근 방법
+## 기능
 
-## 윈도우즈에서 UI를 통해 접근하기
+### 추가 테이블
 
-- 설치한 이후, `C:/Machbase/programs/` (혹은 그에 해당하는) 경로에 있는 `machwin.exe` (혹은 설치된 OS에 해당하는 실행) 파일을 실행해 주세요.
-- 프로그램 UI의 좌측 최상단에 있는 `Machbase` 버튼을 클릭한 뒤, `machsql` 옵션을 선택해 주세요.
-- 실행한 뒤 로그인하라는 문구가 뜰 것입니다. 접근 IP 주소, ID, 비밀번호를 각각 순서대로 입력한 뒤 machsql을 사용할 수 있습니다.
-- [여기](#설치-후-기본값-계정)에서 계속하시면 됩니다.
+1. [🚧 태그 테이블](/features/tables/tag.md)
+2. [🚧 로그 테이블](/features/tables/log.md)
+3. [🚧 참조 테이블](/features/tables/lookup.md)
+4. [🚧 휘발성 테이블](/features/tables/violatile.md)
 
-## 명령어 실행을 통해 접근하기
+### 기타
 
-- 쉘에서 다음과 같은 명령어를 입력하면 machsql에 로그인해 명령어를 전송할 수 있습니다.
+1. [🚧 스트림](/features/stream.md)
+2. [🚧 백업 및 마운트](/features/backup_and_mount.md)
 
-```sh
-machsql -s localhost -u SYS -p manager
-```
+## 문의
 
-자세한 명령어 사용 방법은 <https://machbase.atlassian.net/wiki/spaces/MANUAL/pages/159612968/MACHSQL> 문서를 참고해 주시기 바랍니다.
+이 가이드는 전문가가 아닌 학생의 개인 저작물이며, Machbase사에서 제작되거나 승인받지 않았습니다.
 
-## 설치 후 기본값 계정
-
-```text
-id: SYS
-pw: manager
-```
-
-💡 올바르지 않은 비밀번호를 입력할 경우 machsql에서 명령어를 전송하실 수 없다는 점 참고해 주세요.
-
-계정 변경과 관련된 내용은 <https://machbase.atlassian.net/wiki/spaces/M7M/pages/417761757> 문서를 참고해 주시기 바랍니다.
-
-## 테스트 코드
-
-다음은 machsql이 제대로 작동하는지 검증하기 위한 간단한 코드입니다.
-
-테스트용 테이블을 생성한 후, 행을 추가하고 출력한 뒤 테이블을 삭제합니다.
-
-```sql
-CREATE TABLE test_table (id INTEGER, name VARCHAR(100) PROPERTY(MINMAX_CACHE_SIZE = 0)); -- 테스트할 테이블 생성
-INSERT INTO test_table values (0, "test"); -- 값 추가
-SELECT * FROM test_table; -- 값 출력
-DROP TABLE test_table; -- 테이블 삭제
-```
+문의는 해당 레포지토리에 이슈를 생성해주시기 바랍니다.
